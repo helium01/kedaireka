@@ -15,6 +15,10 @@ class CreateTentangKamiTable extends Migration
     {
         Schema::create('tentang_kami', function (Blueprint $table) {
             $table->id();
+            $table->text('profil');
+            $table->text('visi');
+            $table->text('misi');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
