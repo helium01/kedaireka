@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminControl;
+use App\Http\Controllers\KontenControl;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 // route untuk admin
 route::get('/dashboard',[AdminControl::class,'admin'])->name('dashboard');
+route::get('/apalah',[KontenControl::class,'user'])->name('user');
 
 Auth::routes();
 
