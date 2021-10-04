@@ -1,457 +1,900 @@
-@include('admin.layout.css')
-  <title>Star Admin2 </title>
-  
 
-<body>
-  <div class="container-scroller"> 
-    <!-- partial:partials/_navbar.html -->
-    @include('admin.layout.header')
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SISTEM MONITORING | </title>
+
+    <!-- Bootstrap -->
+    <link href="{{asset('admin')}}/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{asset('admin')}}/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{asset('admin')}}/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{asset('admin')}}/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="{{asset('admin')}}/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{{asset('admin')}}/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{asset('admin')}}/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{asset('admin')}}/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>IPAL</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="{{asset('admin')}}/images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Sistem Monitoring</span>
+                <h2>KEDAIREKA</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                <li><a href="form.html"><i class="fa fa-desktop"></i> Sensor ph </a>
+                  </li>
+                  <li><a href="form.html"><i class="fa fa-edit"> Suhu Air </a>
+                  </li>
+                  <li><a href="form.html"><i class="fa fa-table"></i> Total Suspended Solid </a>
+                  </li>
+                  <li><a href="form.html"><i class="fa fa-bar-chart-o"></i> DO </a>
+                  </li>
+                    </ul>
+                  </li>
+                    </ul>
+                  </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <ul class="nav side-menu">                 
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
           </div>
         </div>
-      </div>
-      <div id="right-sidebar" class="settings-panel">
-        <i class="settings-close ti-close"></i>
-        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="{{asset('admin')}}/#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="{{asset('admin')}}/#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-            <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
-                <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
-                </div>
-              </form>
-            </div>
-            <div class="list-wrapper px-3">
-              <ul class="d-flex flex-column-reverse todo-list">
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Team review meeting at 3.00 PM
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{asset('admin')}}/images/img.jpg" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
                 </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Prepare for presentation
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Resolve all the low priority tickets due today
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Schedule meeting for next week
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Project review
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="{{asset('admin')}}/images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="{{asset('admin')}}/images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="{{asset('admin')}}/images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="{{asset('admin')}}/images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
                 </li>
               </ul>
-            </div>
-            <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 11 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-              <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary me-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
+            </nav>
           </div>
-          <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
-                  </div>
-                  <p>Away</p>
-                </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="{{asset('admin')}}/images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
-          </div>
-          <!-- chat tab ends -->
         </div>
-      </div>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      @include('admin.layout.sidebar')
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+              <div class="count">2500</div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
+              <div class="count">123.50</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
+              <div class="count green">2,500</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+              <div class="count">2,315</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
+              <div class="count">7,325</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+          </div>
+          <!-- /top tiles -->
+
           <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>DHT 11 <small>sensor suhu</small></h3>
+                  </div>
+                 
+                </div>
+
                 
-                <div class="tab-content tab-content-basic">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="statistics-details d-flex align-items-center justify-content-between">
-                          <div>
-                            <p class="statistics-title">Bounce Rate</p>
-                            <h3 class="rate-percentage">32.53%</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                
+                <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1521284/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>App Versions</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h4>App Usage across versions</h4>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.2</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>123k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.3</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>53k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.4</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>23k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.5</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>3k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.6</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>1k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                  <h2>Device Usage</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:37%;">
+                        <p>Top 5</p>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Device</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">Progress</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td>
+                      <td>
+                        <table class="tile_info">
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square blue"></i>IOS </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square green"></i>Android </p>
+                            </td>
+                            <td>10%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square purple"></i>Blackberry </p>
+                            </td>
+                            <td>20%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square aero"></i>Symbian </p>
+                            </td>
+                            <td>15%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square red"></i>Others </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Quick Settings</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
+                    <ul class="quick-list">
+                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
+                      </li>
+                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
+                      </li>
+                    </ul>
+
+                    <div class="sidebar-widget">
+                        <h4>Profile Completion</h4>
+                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
+                        <div class="goal-wrapper">
+                          <span id="gauge-text" class="gauge-value pull-left">0</span>
+                          <span class="gauge-value pull-left">%</span>
+                          <span id="goal-text" class="goal-value pull-right">100%</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Recent Activities <small>Sessions</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
+
+                    <ul class="list-unstyled timeline widget">
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
                           </div>
-                          <div>
-                            <p class="statistics-title">Page Views</p>
-                            <h3 class="rate-percentage">7,682</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
                           </div>
-                          <div>
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
                           </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
                           </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-8 col-sm-8 col-xs-12">
+
+
+
+              <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Visitors location <small>geo-presentation</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="dashboard-widget-content">
+                        <div class="col-md-4 hidden-small">
+                          <h2 class="line_30">125.7k Views from 60 countries</h2>
+
+                          <table class="countries_list">
+                            <tbody>
+                              <tr>
+                                <td>United States</td>
+                                <td class="fs15 fw700 text-right">33%</td>
+                              </tr>
+                              <tr>
+                                <td>France</td>
+                                <td class="fs15 fw700 text-right">27%</td>
+                              </tr>
+                              <tr>
+                                <td>Germany</td>
+                                <td class="fs15 fw700 text-right">16%</td>
+                              </tr>
+                              <tr>
+                                <td>Spain</td>
+                                <td class="fs15 fw700 text-right">11%</td>
+                              </tr>
+                              <tr>
+                                <td>Britain</td>
+                                <td class="fs15 fw700 text-right">10%</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+
+                <!-- Start to do list -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>To Do List <small>Sample tasks</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                      <div class="">
+                        <ul class="to_do">
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End to do list -->
+                
+                <!-- start of weather widget -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Daily active users <small>Sessions</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="temperature"><b>Monday</b>, 07:30 AM
+                            <span>F</span>
+                            <span><b>C</b></span>
                           </div>
                         </div>
                       </div>
-                    </div> 
-                    
-                    
-                    <div class="card-body">
-                                <div class="row">
-                                  <div class="col-lg-12"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <h4 class="card-title card-title-dash">grafik temperatur</h4>
-                                    </div>
-                                    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1520221/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature+Graph&type=line"></iframe>
-                                  </div>
-                                </div>
-                              </div>
-                            
-                              
-                    <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
-                                  </div>
-                                  <div>
-                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
-                                  </div>
-                                </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
-                                    <thead>
-                                      <tr>
-                                        <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </th>
-                                        <th>Customer</th>
-                                        <th>Company</th>
-                                        <th>Progress</th>
-                                        <th>Status</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex ">
-                                            <img src="{{asset('admin')}}/images/faces/face1.jpg" alt="">
-                                            <div>
-                                              <h6>Brandon Washington</h6>
-                                              <p>Head admin</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Company name 1</h6>
-                                          <p>company type</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                              <p class="text-success">79%</p>
-                                              <p>85/162</p>
-                                            </div>
-                                            <div class="progress progress-md">
-                                              <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">In progress</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="{{asset('admin')}}/images/faces/face2.jpg" alt="">
-                                            <div>
-                                              <h6>Laura Brooks</h6>
-                                              <p>Head admin</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Company name 1</h6>
-                                          <p>company type</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                              <p class="text-success">65%</p>
-                                              <p>85/162</p>
-                                            </div>
-                                            <div class="progress progress-md">
-                                              <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">In progress</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="{{asset('admin')}}/images/faces/face3.jpg" alt="">
-                                            <div>
-                                              <h6>Wayne Murphy</h6>
-                                              <p>Head admin</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Company name 1</h6>
-                                          <p>company type</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                              <p class="text-success">65%</p>
-                                              <p>85/162</p>
-                                            </div>
-                                            <div class="progress progress-md">
-                                              <div class="progress-bar bg-warning" role="progressbar" style="width: 38%" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td><div class="badge badge-opacity-warning">In progress</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="{{asset('admin')}}/images/faces/face4.jpg" alt="">
-                                            <div>
-                                              <h6>Matthew Bailey</h6>
-                                              <p>Head admin</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Company name 1</h6>
-                                          <p>company type</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                              <p class="text-success">65%</p>
-                                              <p>85/162</p>
-                                            </div>
-                                            <div class="progress progress-md">
-                                              <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td><div class="badge badge-opacity-danger">Pending</div></td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i><i class="input-helper"></i></label>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <div class="d-flex">
-                                            <img src="{{asset('admin')}}/images/faces/face5.jpg" alt="">
-                                            <div>
-                                              <h6>Katherine Butler</h6>
-                                              <p>Head admin</p>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td>
-                                          <h6>Company name 1</h6>
-                                          <p>company type</p>
-                                        </td>
-                                        <td>
-                                          <div>
-                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                              <p class="text-success">65%</p>
-                                              <p>85/162</p>
-                                            </div>
-                                            <div class="progress progress-md">
-                                              <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td><div class="badge badge-opacity-success">Completed</div></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              
-                    
-                    
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="weather-icon">
+                            <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
+                          </div>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="weather-text">
+                            <h2>Texas <br><i>Partly Cloudy Day</i></h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="weather-text pull-right">
+                          <h3 class="degrees">23</h3>
+                        </div>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                      <div class="row weather-days">
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Mon</h2>
+                            <h3 class="degrees">25</h3>
+                            <canvas id="clear-day" width="32" height="32"></canvas>
+                            <h5>15 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Tue</h2>
+                            <h3 class="degrees">25</h3>
+                            <canvas height="32" width="32" id="rain"></canvas>
+                            <h5>12 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Wed</h2>
+                            <h3 class="degrees">27</h3>
+                            <canvas height="32" width="32" id="snow"></canvas>
+                            <h5>14 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Thu</h2>
+                            <h3 class="degrees">28</h3>
+                            <canvas height="32" width="32" id="sleet"></canvas>
+                            <h5>15 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Fri</h2>
+                            <h3 class="degrees">28</h3>
+                            <canvas height="32" width="32" id="wind"></canvas>
+                            <h5>11 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Sat</h2>
+                            <h3 class="degrees">26</h3>
+                            <canvas height="32" width="32" id="cloudy"></canvas>
+                            <h5>10 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
                   </div>
+
                 </div>
+                <!-- end of weather widget -->
               </div>
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        @include('admin.layout.footer')
-        <!-- partial -->
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
       </div>
-      <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
 
-  @include('admin.layout.js')
+    <!-- jQuery -->
+    <script src="{{asset('admin')}}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{asset('admin')}}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{asset('admin')}}/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="{{asset('admin')}}/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="{{asset('admin')}}/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="{{asset('admin')}}/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{asset('admin')}}/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="{{asset('admin')}}/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="{{asset('admin')}}/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="{{asset('admin')}}/vendors/Flot/jquery.flot.js"></script>
+    <script src="{{asset('admin')}}/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="{{asset('admin')}}/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="{{asset('admin')}}/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="{{asset('admin')}}/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="{{asset('admin')}}/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="{{asset('admin')}}/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="{{asset('admin')}}/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="{{asset('admin')}}/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="{{asset('admin')}}/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="{{asset('admin')}}/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="{{asset('admin')}}/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{asset('admin')}}/vendors/moment/min/moment.min.js"></script>
+    <script src="{{asset('admin')}}/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+    <!-- Custom Theme Scripts -->
+    <script src="{{asset('admin')}}/build/js/custom.min.js"></script>
+	
+  </body>
+</html>
